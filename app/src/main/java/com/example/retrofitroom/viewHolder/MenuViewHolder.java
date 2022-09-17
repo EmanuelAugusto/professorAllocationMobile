@@ -45,8 +45,6 @@ public class MenuViewHolder extends RecyclerView.ViewHolder implements View.OnCl
     @Override
     public void onClick(View v){
 
-        Toast.makeText(context, localDataSet.get(getAdapterPosition()).getName(), Toast.LENGTH_SHORT).show();
-
         String option = localDataSet.get(getAdapterPosition()).getOption();
 
         if(option.equals("department")){

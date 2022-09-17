@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.hardware.camera2.TotalCaptureResult;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.retrofitroom.connection.ConnectionConfig;
@@ -51,8 +52,12 @@ public class NewDepartmentActivity extends AppCompatActivity {
 
                     activityNewDepartmentBinding.edMensagem.setText(responseData.getName());
 
-                }
+                    activityNewDepartmentBinding.titleDepartmentForm.setVisibility(View.VISIBLE);
+                    activityNewDepartmentBinding.btEnviar.setVisibility(View.VISIBLE);
+                    activityNewDepartmentBinding.edMensagem.setVisibility(View.VISIBLE);
+                    activityNewDepartmentBinding.progressBarNewDepartments.setVisibility(View.GONE);
 
+                }
                 @Override
                 public void onFailure(Call<Departments> call, Throwable t) {
                     Toast.makeText(getApplicationContext(), "Erro ao criar departamento", Toast.LENGTH_LONG).show();
@@ -60,6 +65,11 @@ public class NewDepartmentActivity extends AppCompatActivity {
             });
         }else{
             activityNewDepartmentBinding.titleDepartmentForm.setText("Novo departamento");
+
+            activityNewDepartmentBinding.titleDepartmentForm.setVisibility(View.VISIBLE);
+            activityNewDepartmentBinding.btEnviar.setVisibility(View.VISIBLE);
+            activityNewDepartmentBinding.edMensagem.setVisibility(View.VISIBLE);
+            activityNewDepartmentBinding.progressBarNewDepartments.setVisibility(View.GONE);
         }
 
         activityNewDepartmentBinding.btEnviar.setOnClickListener(view -> {
@@ -83,6 +93,11 @@ public class NewDepartmentActivity extends AppCompatActivity {
         DepartmentsRequest departmentsRequest = new DepartmentsRequest();
         departmentsRequest.setName(name);
 
+        activityNewDepartmentBinding.titleDepartmentForm.setVisibility(View.GONE);
+        activityNewDepartmentBinding.btEnviar.setVisibility(View.GONE);
+        activityNewDepartmentBinding.edMensagem.setVisibility(View.GONE);
+        activityNewDepartmentBinding.progressBarNewDepartments.setVisibility(View.VISIBLE);
+
         departmentService.createDepartment(departmentsRequest).enqueue(new Callback<Departments>() {
             @Override
             public void onResponse(Call<Departments> call, Response<Departments> response) {
@@ -90,6 +105,7 @@ public class NewDepartmentActivity extends AppCompatActivity {
 
                 Intent mainActivity = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(mainActivity);
+                finish();
             }
 
             @Override
@@ -101,6 +117,11 @@ public class NewDepartmentActivity extends AppCompatActivity {
 
     protected void updateDepartment(String name) {
 
+        activityNewDepartmentBinding.titleDepartmentForm.setVisibility(View.GONE);
+        activityNewDepartmentBinding.btEnviar.setVisibility(View.GONE);
+        activityNewDepartmentBinding.edMensagem.setVisibility(View.GONE);
+        activityNewDepartmentBinding.progressBarNewDepartments.setVisibility(View.VISIBLE);
+
         DepartmentsRequest departmentsRequest = new DepartmentsRequest();
         departmentsRequest.setName(name);
 
@@ -111,6 +132,7 @@ public class NewDepartmentActivity extends AppCompatActivity {
 
                 Intent mainActivity = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(mainActivity);
+                finish();
             }
 
             @Override

@@ -38,7 +38,9 @@ public class MainActivity extends AppCompatActivity {
 
         activityMainBinding.floatingActionButton.setOnClickListener(view -> {
             Intent newDepartmentActivity = new Intent(getApplicationContext(), NewDepartmentActivity.class);
+            newDepartmentActivity.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(newDepartmentActivity);
+            finish();
         });
 
         this.getAllDepartments();

@@ -42,7 +42,6 @@ public class DepartmentsAdapter extends RecyclerView.Adapter<ItemViewHolder> {
     public ItemViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         itemListBinding = ItemListBinding.inflate(LayoutInflater.from(viewGroup.getContext()), viewGroup, false);
 
-
         iEvents = new IEvents() {
             @Override
             public void deleteItem(int position) {
@@ -59,7 +58,6 @@ public class DepartmentsAdapter extends RecyclerView.Adapter<ItemViewHolder> {
                         @Override
                         public void onResponse(Call<Void> call, Response<Void> response) {
                             Toast.makeText(context.getApplicationContext(), "Deletado", Toast.LENGTH_SHORT).show();
-                            localDataSet.remove(context.getApplicationContext());
                             localDataSet.remove(position);
                             notifyItemRemoved(position);
                         }
@@ -87,7 +85,7 @@ public class DepartmentsAdapter extends RecyclerView.Adapter<ItemViewHolder> {
                 String departmentId = localDataSet.get(position).getId().toString();
 
                 Intent newDepartmentActivity = new Intent(context, NewDepartmentActivity.class);
-                newDepartmentActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                newDepartmentActivity.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 newDepartmentActivity.putExtra("departmentId", departmentId);
                 context.startActivity(newDepartmentActivity);
             }
