@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Alert Dialog Theme -->
+<style name="AlertDialogCustom" parent="@android:style/Theme.Dialog">
+    <item name="android:background">@color/colorBackground</item>
+</style>
