@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/discordGray"
-    tools:context=".NewDepartmentActivity">
+    tools:context=".NewCourseActivity">
 
     <ProgressBar
         android:id="@+id/progressBarNewDepartments"
@@ -40,7 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="396dp"
         android:ems="10"
-        android:hint="Nome do curso"
+        android:hint="Nome do departamento"
         android:inputType="textPersonName"
         android:textColorHint="@color/white"
         android:textColor="@drawable/textview_selector"
