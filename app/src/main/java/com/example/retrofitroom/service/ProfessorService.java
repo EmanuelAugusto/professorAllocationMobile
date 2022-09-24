@@ -26,7 +26,7 @@ public interface ProfessorService {
     Call<Teacher> createProfessor(@Body() ProfessorRequest professorRequest);
 
     @PUT("/teachers/{id}")
-    Call<Teacher> updateProfessor(@Path (value="id") Long id, @Body() CourseRequest courseRequest);
+    Call<Teacher> updateProfessor(@Path (value="id") Long id, @Body() ProfessorRequest professorRequest);
 
     @DELETE("/teachers/{id}")
     Call<Void> deleteProfessor(@Path (value="id") Long id);

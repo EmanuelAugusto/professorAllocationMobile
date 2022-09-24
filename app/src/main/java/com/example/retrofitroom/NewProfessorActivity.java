@@ -60,6 +60,11 @@ public class NewProfessorActivity extends AppCompatActivity {
 
 
         activityNewProfessorBinding.btEnviar.setOnClickListener(view->{
+            if(professorId != null){
+
+                this.updateProfessor();
+                return;
+            }
             this.createProfessor();
         });
 
@@ -76,13 +81,7 @@ public class NewProfessorActivity extends AppCompatActivity {
         });
     }
 
-    protected void createProfessor() {
-
-        ProfessorRequest professorRequest = new ProfessorRequest();
-        professorRequest.setName(activityNewProfessorBinding.edName.getText().toString());
-        professorRequest.setCpf(activityNewProfessorBinding.edCPF.getText().toString());
-        professorRequest.setDepartmentId(departments.get(activityNewProfessorBinding.spinner.getSelectedItemPosition()).getId());
-
+    protected void initLoadingStateView(){
         activityNewProfessorBinding.progressBarNewProfessors.setVisibility(View.VISIBLE);
 
         activityNewProfessorBinding.spinner.setVisibility(View.GONE);
@@ -90,15 +89,65 @@ public class NewProfessorActivity extends AppCompatActivity {
         activityNewProfessorBinding.edCPF.setVisibility(View.GONE);
         activityNewProfessorBinding.edName.setVisibility(View.GONE);
         activityNewProfessorBinding.titleProfessorsForm.setVisibility(View.GONE);
+    }
+
+    protected void endLoadingStateView(){
+        activityNewProfessorBinding.progressBarNewProfessors.setVisibility(View.GONE);
+
+        activityNewProfessorBinding.spinner.setVisibility(View.VISIBLE);
+        activityNewProfessorBinding.btEnviar.setVisibility(View.VISIBLE);
+        activityNewProfessorBinding.edCPF.setVisibility(View.VISIBLE);
+        activityNewProfessorBinding.edName.setVisibility(View.VISIBLE);
+        activityNewProfessorBinding.titleProfessorsForm.setVisibility(View.VISIBLE);
+    }
+
+    protected void updateProfessor() {
+        ProfessorRequest professorRequest = this.getFormState();
+        this.initLoadingStateView();
+
+        professorService.updateProfessor(this.professorId, professorRequest).enqueue(new Callback<Teacher>() {
+            @Override
+            public void onResponse(Call<Teacher> call, Response<Teacher> response) {
+                if(response.isSuccessful()){
+                    Toast.makeText(getApplicationContext(), "Criado com sucesso", Toast.LENGTH_LONG).show();
+                    toScreenList();
+                }
+            }
+            @Override
+            public void onFailure(Call<Teacher> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "Falha na comunicaçao com o serviço", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    protected ProfessorRequest getFormState(){
+        ProfessorRequest professorRequest = new ProfessorRequest();
+        professorRequest.setName(activityNewProfessorBinding.edName.getText().toString());
+        professorRequest.setCpf(activityNewProfessorBinding.edCPF.getText().toString());
+        professorRequest.setDepartmentId(departments.get(activityNewProfessorBinding.spinner.getSelectedItemPosition()).getId());
+
+        return professorRequest;
+    }
+
+    protected void toScreenList(){
+        Intent professorActivity = new Intent(getApplicationContext(), ProfessorActivity.class);
+        startActivity(professorActivity);
+        finish();
+    }
+
+    protected void createProfessor() {
+
+        ProfessorRequest professorRequest = this.getFormState();
+
+        this.initLoadingStateView();
 
         professorService.createProfessor(professorRequest).enqueue(new Callback<Teacher>() {
             @Override
             public void onResponse(Call<Teacher> call, Response<Teacher> response) {
-                Toast.makeText(getApplicationContext(), "Criado com sucesso", Toast.LENGTH_LONG).show();
-
-                Intent professorActivity = new Intent(getApplicationContext(), ProfessorActivity.class);
-                startActivity(professorActivity);
-                finish();
+                if(response.isSuccessful()){
+                    Toast.makeText(getApplicationContext(), "Criado com sucesso", Toast.LENGTH_LONG).show();
+                    toScreenList();
+                }
             }
 
             @Override
@@ -134,7 +183,6 @@ public class NewProfessorActivity extends AppCompatActivity {
                             activityNewProfessorBinding.edCPF.setText(responseData.getName());
                             activityNewProfessorBinding.edName.setText(responseData.getCpf());
 
-                            System.out.println(departments);
                             int position = 0;
                             for (Departments obj : departments) {
                                 if (obj.getId().equals(responseData.getdepartmentId())) {
@@ -145,14 +193,7 @@ public class NewProfessorActivity extends AppCompatActivity {
 
                             activityNewProfessorBinding.spinner.setSelection(position);
 
-                            activityNewProfessorBinding.progressBarNewProfessors.setVisibility(View.GONE);
-
-                            activityNewProfessorBinding.spinner.setVisibility(View.VISIBLE);
-                            activityNewProfessorBinding.btEnviar.setVisibility(View.VISIBLE);
-                            activityNewProfessorBinding.edCPF.setVisibility(View.VISIBLE);
-                            activityNewProfessorBinding.edName.setVisibility(View.VISIBLE);
-                            activityNewProfessorBinding.titleProfessorsForm.setVisibility(View.VISIBLE);
-
+                            endLoadingStateView();
 
                         }
                         @Override
@@ -163,14 +204,7 @@ public class NewProfessorActivity extends AppCompatActivity {
                 }else {
                     activityNewProfessorBinding.titleProfessorsForm.setText("Novo professor");
 
-                    activityNewProfessorBinding.progressBarNewProfessors.setVisibility(View.GONE);
-
-                    activityNewProfessorBinding.spinner.setVisibility(View.VISIBLE);
-                    activityNewProfessorBinding.btEnviar.setVisibility(View.VISIBLE);
-                    activityNewProfessorBinding.edCPF.setVisibility(View.VISIBLE);
-                    activityNewProfessorBinding.edName.setVisibility(View.VISIBLE);
-                    activityNewProfessorBinding.titleProfessorsForm.setVisibility(View.VISIBLE);
-
+                    endLoadingStateView();
                 }
             }
 
