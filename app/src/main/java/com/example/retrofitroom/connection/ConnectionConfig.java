@@ -2,6 +2,7 @@ package com.example.retrofitroom.connection;
 
 import com.example.retrofitroom.service.CourseService;
 import com.example.retrofitroom.service.DepartmentService;
+import com.example.retrofitroom.service.ProfessorService;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -19,5 +20,9 @@ public class ConnectionConfig {
 
     public CourseService courseService(){
         return retrofit.create(CourseService.class);
+    }
+
+    public ProfessorService professorService(){
+        return retrofit.create(ProfessorService.class);
     }
 }

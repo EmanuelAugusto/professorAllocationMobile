@@ -3,12 +3,12 @@
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#282b30</color>
     <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#7289da</color>
+    <color name="teal_200">#5865f2</color>
     <color name="teal_700">#7289da</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="discordGray">#282b30</color>
     <color name="discordGrayLess">#424549</color>
-    <color name="discordPurple">#7289da</color>
+    <color name="discordPurple">#5865f2</color>
     <color name="red">#f44336</color>
 </resources>

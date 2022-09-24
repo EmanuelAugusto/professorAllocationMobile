@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.retrofitroom.CourseActivity;
 import com.example.retrofitroom.MainActivity;
+import com.example.retrofitroom.ProfessorActivity;
 import com.example.retrofitroom.databinding.MenuListBinding;
 import com.example.retrofitroom.models.MenuItens;
 
@@ -55,6 +56,11 @@ public class MenuViewHolder extends RecyclerView.ViewHolder implements View.OnCl
         if(option.equals("courses")){
             Intent courseActivity = new Intent(context, CourseActivity.class);
             context.startActivity(courseActivity);
+        }
+
+        if(option.equals("professors")){
+            Intent professorActivity = new Intent(context, ProfessorActivity.class);
+            context.startActivity(professorActivity);
         }
 
 

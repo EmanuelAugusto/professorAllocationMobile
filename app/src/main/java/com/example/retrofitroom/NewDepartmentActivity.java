@@ -3,14 +3,11 @@ package com.example.retrofitroom;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.hardware.camera2.TotalCaptureResult;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import com.example.retrofitroom.connection.ConnectionConfig;
-import com.example.retrofitroom.databinding.ActivityMainBinding;
 import com.example.retrofitroom.models.Departments;
 import com.example.retrofitroom.models.DepartmentsRequest;
 import com.example.retrofitroom.service.DepartmentService;

@@ -40,7 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="396dp"
         android:ems="10"
-        android:hint="Nome do departamento"
+        android:hint="Nome do curso"
         android:inputType="textPersonName"
         android:textColorHint="@color/white"
         android:textColor="@drawable/textview_selector"
