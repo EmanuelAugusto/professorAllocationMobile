@@ -56,7 +56,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseViewHolder> {
 
                 alertDialogBuilder.setTitle("Apagar curso.");
 
-                alertDialogBuilder.setMessage("Deseja realmente apagar o curso");
+                alertDialogBuilder.setMessage("Deseja realmente apagar o curso?");
 
                 alertDialogBuilder.setPositiveButton("Sim",(dialog, which) -> {
                     Long id = localDataSet.get(position).getId();

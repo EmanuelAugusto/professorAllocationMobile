@@ -180,8 +180,8 @@ public class NewProfessorActivity extends AppCompatActivity {
 
                             Teacher responseData = response.body();
 
-                            activityNewProfessorBinding.edCPF.setText(responseData.getName());
-                            activityNewProfessorBinding.edName.setText(responseData.getCpf());
+                            activityNewProfessorBinding.edCPF.setText(responseData.getCpf());
+                            activityNewProfessorBinding.edName.setText(responseData.getName());
 
                             int position = 0;
                             for (Departments obj : departments) {

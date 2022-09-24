@@ -1,7 +1,7 @@
 package com.example.retrofitroom.models;
 
 public class Allocation {
-    public int id;
+    public Long id;
     public String day;
     public String start;
     public String end;
@@ -10,11 +10,11 @@ public class Allocation {
     public Course course;
     public Teacher teacher;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
