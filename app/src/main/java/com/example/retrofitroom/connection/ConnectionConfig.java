@@ -1,5 +1,6 @@
 package com.example.retrofitroom.connection;
 
+import com.example.retrofitroom.service.AllocationService;
 import com.example.retrofitroom.service.CourseService;
 import com.example.retrofitroom.service.DepartmentService;
 import com.example.retrofitroom.service.ProfessorService;
@@ -24,5 +25,9 @@ public class ConnectionConfig {
 
     public ProfessorService professorService(){
         return retrofit.create(ProfessorService.class);
+    }
+
+    public AllocationService allocationService(){
+        return retrofit.create(AllocationService.class);
     }
 }

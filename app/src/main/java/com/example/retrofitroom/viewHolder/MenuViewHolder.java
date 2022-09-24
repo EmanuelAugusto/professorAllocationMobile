@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.retrofitroom.AllocationActivity;
 import com.example.retrofitroom.CourseActivity;
 import com.example.retrofitroom.MainActivity;
 import com.example.retrofitroom.ProfessorActivity;
@@ -61,6 +62,11 @@ public class MenuViewHolder extends RecyclerView.ViewHolder implements View.OnCl
         if(option.equals("professors")){
             Intent professorActivity = new Intent(context, ProfessorActivity.class);
             context.startActivity(professorActivity);
+        }
+
+        if(option.equals("allocations")){
+            Intent allocationActivity = new Intent(context, AllocationActivity.class);
+            context.startActivity(allocationActivity);
         }
 
 
