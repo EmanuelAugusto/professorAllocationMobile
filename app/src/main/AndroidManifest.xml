@@ -16,6 +16,9 @@
         android:theme="@style/Theme.RetrofitRoom"
         tools:targetApi="31">
         <activity
+            android:name=".NewAllocationActivity"
+            android:exported="false" />
+        <activity
             android:name=".AllocationActivity"
             android:exported="false" />
         <activity

@@ -15,7 +15,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="295dp"
+            android:layout_height="245dp"
             android:orientation="vertical"
             android:padding="10dp">
 
@@ -72,14 +72,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-
-            <Button
-                android:id="@+id/buttonEdit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/discordPurple"
-                android:text="Editar"
-                android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/buttonDelete"

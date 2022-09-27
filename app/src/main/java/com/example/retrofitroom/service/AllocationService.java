@@ -1,6 +1,7 @@
 package com.example.retrofitroom.service;
 
 import com.example.retrofitroom.models.Allocation;
+import com.example.retrofitroom.models.AllocationRequest;
 import com.example.retrofitroom.models.CourseRequest;
 import java.util.List;
 import retrofit2.Call;
@@ -19,10 +20,10 @@ public interface AllocationService {
     Call<Allocation> getAllAllocationsById(@Path(value="id") Long id);
 
     @POST("/allocations")
-    Call<Allocation> createAllocations(@Body() CourseRequest courseRequest);
+    Call<Allocation> createAllocations(@Body() AllocationRequest allocationRequest);
 
     @PUT("/allocations/{id}")
-    Call<Allocation> updateAllocations(@Path (value="id") Long id, @Body() CourseRequest courseRequest);
+    Call<Allocation> updateAllocations(@Path (value="id") Long id, @Body() AllocationRequest allocationRequest);
 
     @DELETE("/allocations/{id}")
     Call<Void> deleteAllocations(@Path (value="id") Long id);

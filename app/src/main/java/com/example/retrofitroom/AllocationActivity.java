@@ -2,6 +2,7 @@ package com.example.retrofitroom;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -29,6 +30,13 @@ public class AllocationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         activityAllocationBinding = ActivityAllocationBinding.inflate(getLayoutInflater());
         setContentView(activityAllocationBinding.getRoot());
+
+        activityAllocationBinding.floatingActionButton.setOnClickListener(View->{
+            Intent newAllocationActivity = new Intent(getApplicationContext(), NewAllocationActivity.class);
+            newAllocationActivity.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(newAllocationActivity);
+            finish();
+        });
 
         this.getAllocations();
     }
